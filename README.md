@@ -39,4 +39,6 @@ Aplikasi ini dirancang untuk mencatat, menampilkan, dan menghapus data menu cate
 
 ## 📸 Tangkapan Layar (Screenshot Output)
 
-![Tampilan Output Program](screenshot.png)
+![Tampilan Output Menu](Menu Makanan&Minuman.png)
+![Tampilan Output Menambah](Menambahkan Menu.png)
+![Tampilan Output Hapus](Hapus Menu.png)
