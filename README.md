@@ -39,6 +39,11 @@ Aplikasi ini dirancang untuk mencatat, menampilkan, dan menghapus data menu cate
 
 ## 📸 Tangkapan Layar (Screenshot Output)
 
-![Tampilan Output Menu](MenuMakanan&Minuman.png)
-![Tampilan Output Menambah](MenambahkanMenu.png)
-![Tampilan Output Hapus](HapusMenu.png)
+### 1. Lihat Semua Menu
+![Tampilan Menu](src/main/java/com/mycompany/minprocatering/MenuMakanan&Minuman.png)
+
+### 2. Tambah Menu
+![Tambah Menu](src/main/java/com/mycompany/minprocatering/MenambahkanMenu.png)
+
+### 3. Hapus Menu
+![Hapus Menu](src/main/java/com/mycompany/minprocatering/HapusMenu.png)
