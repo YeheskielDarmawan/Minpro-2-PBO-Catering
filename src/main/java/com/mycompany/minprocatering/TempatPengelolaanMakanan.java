@@ -5,53 +5,41 @@ import java.util.ArrayList;
 public class TempatPengelolaanMakanan {
     private ArrayList<MenuCatering> daftarMenu = new ArrayList<>();
 
-    // Constructor: Menambahkan data bawaan otomatis saat program pertama kali berjalan
     public TempatPengelolaanMakanan() {
-        daftarMenu.add(new MenuCatering(101, "Nasi Ayam Goreng Lengkuas + Sambal Bajak", 22000));
-        daftarMenu.add(new MenuCatering(102, "Nasi Rendang Sapi + Daun Singkong", 28000));
-        daftarMenu.add(new MenuCatering(201, "Chicken Breast Salad + Sesame Dressing", 35000));
-        daftarMenu.add(new MenuCatering(202, "Nasi Merah Salmon Teriyaki", 45000));
-        daftarMenu.add(new MenuCatering(301, "Paket Buffet Prasmanan Prasojo (Min. 50 Pax)", 50000));
+        // Dummy data awal
+        daftarMenu.add(new MenuMakanan("M01", "Ayam Goreng", 20000, "Pedas"));
+        daftarMenu.add(new MenuMinuman("D01", "Es Teh", 5000, "Sedang"));
     }
 
     public void tambahMenu(MenuCatering menu) {
         daftarMenu.add(menu);
-        System.out.println("-> Berhasil menambahkan menu!");
+        System.out.println("Data berhasil ditambah!");
     }
 
-    public void tampilkanSemuaMenu() {
-        if (daftarMenu.isEmpty()) {
-            System.out.println("-> Daftar menu catering masih kosong.");
-            return;
-        }
-        System.out.println("\n=== DAFTAR MENU CATERING HARIAN ===");
-        for (MenuCatering menu : daftarMenu) {
-            menu.tampilkanData();
-        }
-    }
-
-    public boolean ubahMenu(int id, String namaBaru, double hargaBaru) {
-        for (MenuCatering menu : daftarMenu) {
-            if (menu.getId() == id) {
-                menu.setNamaMenu(namaBaru);
-                menu.setHarga(hargaBaru);
-                System.out.println("-> Data menu berhasil diperbarui!");
-                return true;
+    public void tampilkanSemua() {
+        if (daftarMenu.size() == 0) {
+            System.out.println("Belum ada data menu.");
+        } else {
+            System.out.println("\n--- DAFTAR MENU ---");
+            for (int i = 0; i < daftarMenu.size(); i++) {
+                daftarMenu.get(i).tampilDetail();
             }
         }
-        System.out.println("-> Menu dengan ID " + id + " tidak ditemukan.");
-        return false;
     }
 
-    public boolean hapusMenu(int id) {
+    public void hapusMenu(String id) {
+        boolean ada = false;
         for (int i = 0; i < daftarMenu.size(); i++) {
-            if (daftarMenu.get(i).getId() == id) {
+            if (daftarMenu.get(i).getId().equals(id)) {
                 daftarMenu.remove(i);
-                System.out.println("-> Menu berhasil dihapus!");
-                return true;
+                ada = true;
+                System.out.println("Menu berhasil dihapus!");
+                break;
             }
         }
-        System.out.println("-> Menu dengan ID " + id + " tidak ditemukan.");
-        return false;
+        
+        if (ada == false) {
+            System.out.println("ID menu tidak ditemukan.");
+        }
     }
 }

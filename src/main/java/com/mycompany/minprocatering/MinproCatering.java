@@ -1,47 +1,63 @@
 package com.mycompany.minprocatering;
 
+import java.util.Scanner;
+
 public class MinproCatering {
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
         TempatPengelolaanMakanan pengelola = new TempatPengelolaanMakanan();
-        InputValidator validator = new InputValidator();
-        boolean berjalan = true;
+        int pilihan = 0;
 
-        while (berjalan) {
-            System.out.println("\n=== SISTEM MANAJEMEN CATERING HARIAN ===");
-            System.out.println("1. Tambah Menu");
-            System.out.println("2. Lihat Semua Menu");
-            System.out.println("3. Ubah Menu");
+        while (pilihan != 5) {
+            System.out.println("\n=== MENU CATERING ===");
+            System.out.println("1. Lihat Semua Menu");
+            System.out.println("2. Tambah Makanan");
+            System.out.println("3. Tambah Minuman");
             System.out.println("4. Hapus Menu");
             System.out.println("5. Keluar");
-            
-            int pilihan = validator.inputInt("Pilih menu (1-5): ");
+            System.out.print("Pilih menu (1-5): ");
+            pilihan = input.nextInt();
+            input.nextLine(); 
 
-            switch (pilihan) {
-                case 1:
-                    int id = validator.inputInt("Masukkan ID Menu: ");
-                    String nama = validator.inputString("Masukkan Nama Menu: ");
-                    double harga = validator.inputDouble("Masukkan Harga Menu: "); 
-                    pengelola.tambahMenu(new MenuCatering(id, nama, harga)); 
-                    break;
-                case 2:
-                    pengelola.tampilkanSemuaMenu();
-                    break;
-                case 3:
-                    int idUbah = validator.inputInt("Masukkan ID Menu yang ingin diubah: ");
-                    String namaBaru = validator.inputString("Masukkan Nama Menu Baru: ");
-                    double hargaBaru = validator.inputDouble("Masukkan Harga Menu Baru: ");
-                    pengelola.ubahMenu(idUbah, namaBaru, hargaBaru);
-                    break;
-                case 4:
-                    int idHapus = validator.inputInt("Masukkan ID Menu yang ingin dihapus: ");
-                    pengelola.hapusMenu(idHapus);
-                    break;
-                case 5:
-                    System.out.println("-> Terima kasih telah menggunakan sistem ini!");
-                    berjalan = false;
-                    break;
-                default:
-                    System.out.println("-> Pilihan tidak valid! Masukkan angka 1-5.");
+            if (pilihan == 1) {
+                pengelola.tampilkanSemua();
+            } else if (pilihan == 2) {
+                System.out.print("Masukkan ID: ");
+                String id = input.nextLine();
+                System.out.print("Masukkan Nama Makanan: ");
+                String nama = input.nextLine();
+                System.out.print("Masukkan Harga: ");
+                double harga = input.nextDouble();
+                input.nextLine();
+                System.out.print("Tingkat Pedas: ");
+                String pedas = input.nextLine();
+
+                MenuMakanan mkn = new MenuMakanan(id, nama, harga, pedas);
+                pengelola.tambahMenu(mkn);
+
+            } else if (pilihan == 3) {
+                System.out.print("Masukkan ID: ");
+                String id = input.nextLine();
+                System.out.print("Masukkan Nama Minuman: ");
+                String nama = input.nextLine();
+                System.out.print("Masukkan Harga: ");
+                double harga = input.nextDouble();
+                input.nextLine();
+                System.out.print("Ukuran Minuman: ");
+                String ukuran = input.nextLine();
+
+                MenuMinuman mnm = new MenuMinuman(id, nama, harga, ukuran);
+                pengelola.tambahMenu(mnm);
+
+            } else if (pilihan == 4) {
+                System.out.print("Masukkan ID yang mau dihapus: ");
+                String idHapus = input.nextLine();
+                pengelola.hapusMenu(idHapus);
+
+            } else if (pilihan == 5) {
+                System.out.println("Terima kasih, program selesai!");
+            } else {
+                System.out.println("Pilihan tidak ada, coba lagi.");
             }
         }
     }

@@ -1,29 +1,41 @@
 package com.mycompany.minprocatering;
 
 public class MenuCatering {
-    private int id;
-    private String namaMenu;
+    private String id;
+    private String nama;
     private double harga;
 
-    public MenuCatering(int id, String namaMenu, double harga) {
+    public MenuCatering(String id, String nama, double harga) {
         this.id = id;
-        this.namaMenu = namaMenu;
+        this.nama = nama;
         this.harga = harga;
     }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public String getId() {
+        return id;
+    }
 
-    public String getNamaMenu() { return namaMenu; }
-    public void setNamaMenu(String namaMenu) { this.namaMenu = namaMenu; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public double getHarga() { return harga; }
-    public void setHarga(double harga) { this.harga = harga; }
+    public String getNama() {
+        return nama;
+    }
 
-    public void tampilkanData() {
-        System.out.println("ID        : " + id);
-        System.out.println("Nama Menu : " + namaMenu);
-        System.out.println("Harga     : Rp" + harga);
-        System.out.println("--------------------------------");
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public double getHarga() {
+        return harga;
+    }
+
+    public void setHarga(double harga) {
+        this.harga = harga;
+    }
+
+    public void tampilDetail() {
+        System.out.println("ID: " + id + " | Nama: " + nama + " | Harga: Rp " + harga);
     }
 }
